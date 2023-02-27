@@ -1,6 +1,6 @@
 import random
 #global variables
-gravity = 5
+GRAVITY = 5
 
 class node:
     def __init__(self, x, y, pin):
