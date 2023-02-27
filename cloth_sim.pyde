@@ -10,14 +10,14 @@ class node:
         self.velocityX = 0
         self.velocityY = 0
         self.col = (255,255,255)
+    def move(self):
+        self.x += self.velocityX
+        self.y += self.velocityY
 class thread:
     def __init__(self, node1_index, node2_index):
         self.u_index = node1_index
         self.v_index = node2_index
         self.rest = 50
-def move_node(node):
-    node.x += node.velocityX
-    node.y += node.velocityY
 
 def collide(thread):
     buffer = 5
@@ -146,7 +146,7 @@ def draw():
     #---Final movement---
     for node in nodelist:
         if not node.pin:
-            move_node(node)
+            node.move()
 
         
     #--Draw screen---
