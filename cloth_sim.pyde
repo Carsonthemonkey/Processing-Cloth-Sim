@@ -3,7 +3,7 @@ import random
 GRAVITY = 5
 
 class node:
-    def __init__(self, x, y, pin):
+    def __init__(self, x, y, pin=False):
         self.pin = pin
         self.x = x
         self.y = y
@@ -79,7 +79,7 @@ def cloth_gen(Width, Height, resolution):
     
     for y in range(0, Height, int(vertical_step_resolution)):
         for x in range(0, Width, step_resolution):
-            pointlist.append(node(x +left, y + 20, False))
+            pointlist.append(node(x +left, y + 20))
     pointlist[0].pin = True
     pointlist[resolution-1].pin = True
     pointlist[(resolution-1) * 3/4].pin = True
@@ -132,7 +132,7 @@ def draw():
     #---gravity calculations---
     for node in nodelist:
         if not node.pin:
-            node.velocityY += float(gravity)/fps
+            node.velocityY += float(GRAVITY)/fps
             
     #---thread pull calculations--
     for thread in threadlist:
